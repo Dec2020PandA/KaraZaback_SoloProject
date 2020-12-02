@@ -1,0 +1,26 @@
+// Solo Project //
+
+SOS - Save Our Shore
+
+Making outdoor environmentalism and rehabilitation of natural habitats fun, 
+rewarding and exciting through a social lense. An 'organic' avenue for like-minded 
+earthPromise stewards to socialize, connect and enjoy the outdoors for an overarching cause.
+
+// PO //
+- register/sign in for users
+- create, join, edit events
+
+// P1 //
+- validations
+- Animation
+
+
+// P2 //
+- newsletter
+- page with the event debreif, pictures, images, lbs collected
+- donation page (swag, links to nonprofit causes)
+
+// P3+ //
+- educational talks about ocean pollution, efforts done by experts
+- best practices/ blogs / videoblog: how to protect the ocean from home
+  (diy, alternatives)
