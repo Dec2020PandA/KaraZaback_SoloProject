@@ -2,9 +2,8 @@
 
 SOS - Save Our Shore
 
-Making outdoor environmentalism and rehabilitation of natural habitats fun, 
-rewarding and exciting through a social lense. An 'organic' avenue for like-minded 
-earthPromise stewards to socialize, connect and enjoy the outdoors for an overarching cause.
+Due to the rise of pollution in oceans there is an immediate need for cleanups around the world. Starting with getting young teens involved, Save Our Shore (SOS) focuses on conserving the planet by implementing beach cleanups that rid beaches of trash that is harmful to sea life and the ocean itself.
+
 
 // PO //
 - register/sign in for users
