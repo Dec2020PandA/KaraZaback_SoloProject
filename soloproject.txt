@@ -1,25 +1,30 @@
-// Solo Project //
+Solo Project 
 
 SOS - Save Our Shore
 
 Due to the rise of pollution in oceans there is an immediate need for cleanups around the world. Starting with getting young teens involved, Save Our Shore (SOS) focuses on conserving the planet by implementing beach cleanups that rid beaches of trash that is harmful to sea life and the ocean itself.
 
 
-// PO //
-- register/sign in for users
-- create, join, edit events
+PO 
+- register/sign in for users, validations
+- CRUD for events 
 
-// P1 //
-- validations
-- Animation
+P1 
+- Weather api for users to access on the day of the event
+- google map integration for users to track on their walk
 
 
-// P2 //
-- newsletter
-- page with the event debreif, pictures, images, lbs collected
-- donation page (swag, links to nonprofit causes)
+P2+ 
+- Animating loading page 
+- google calendar api for adding the event to the users google calendar
 
-// P3+ //
-- educational talks about ocean pollution, efforts done by experts
-- best practices/ blogs / videoblog: how to protect the ocean from home
-  (diy, alternatives)
+
+P3+
+- users invite others to join event
+
+
+Whats new to me
+- Weather api
+- Loading page 
+- google map/ google calendar 
+- invite message 
