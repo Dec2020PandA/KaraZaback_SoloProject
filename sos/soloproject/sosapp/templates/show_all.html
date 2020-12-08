@@ -11,7 +11,7 @@
 
 <body>
     <div id="header">
-        <h1>Hello {{request.session.user_id}}!</h1>
+        <h1>Hello {{user.first_name}}!</h1>
         <a href="/logout">Logout</a><br>
         <a href="/events/new"> Make an event!</a>
     </div>
@@ -22,20 +22,22 @@
         <table>
             <tbody>
             <tr>
-                <th>Item</th>
-                <th>Date Added</th>
+                <th>Name</th>
+                <th>Attendees</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
             {% for event in all_events %}
             {% if event.creator.id == request.session.user_id %}
-            {% if event.granted == False %}
+            {% if event.join == False %}
             <tr>
-                <td><a href="/events/{{ event.id}}"><h3>{{event.item}}</h3></a></td>
-                <td>{{event.created_at|date:'M d, Y P' }}</td>
+                <td><a href="/events/{{ event.id}}"><h3>{{event.name}}</h3></a></td>
+                <td>{{event.attendees }}</td>
+                <td>{{event.date }}</td>
                 <td>
                     <a href="/events/delete/{{event.id}}">Remove</a>
                     <a href="/events/edit/{{event.id}}">Edit</a>
-                    <a href="/events/granted/{{event.id}}">Granted</a>
+                    <a href="/events/join/{{event.id}}">Join</a>
                 </td>
             </tr>
             {% endif %}
@@ -46,30 +48,28 @@
     </div>
 
     <div class="container">
-        <h1>Granted events:</h1>
+        <h1>Future events:</h1>
         <table>
             <tr>
-                <th>Item</th>
-                <th>Wisher</th>
-                <th>Date Added</th>
-                <th>Date Granted</th>
-                <th>Likes</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th>Creator</th>
+                <th>Attendees</th>
+                <th>Date</th>
             </tr>
             {% for event in all_events %}
-            {% if event.granted == True %}
+            {% if event.join == True %}
             <tr>
-                <td>{{event.item}}</td>
+                <td>{{event.name}}</td>
                 <td>{{event.creator.first_name}} {{event.creator.last_name}}</td>
-                <td>{{event.created_at|date:'M d, Y P' }}</td>
-                <td>{{event.updated_at|date:'M d, Y P'}}</td>
-                <td>
+                <td>{{event.attendees}}</td>
+                <td>{{event.date }}</td>
+                <!-- <td>
                     <p>Likes: {{event.likes.count}}</p>
                 </td>
                 <td>
                     <a href="/events/{{event.id}}/like">Like</a>
                     <a href="/events/{{event.id}}/unliklike">Unlike</a>
-                </td>
+                </td> -->
             </tr>
             {% endif %}
             {% endfor %}

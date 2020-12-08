@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+</head>
+<body>
+    <div>
+    <h1>{{request.session.greeting}}, you are on the edit page</h1>
+    <a href="/logout">Logout</a><br> | <a href="/events">Go Back</a>
+</div>
+    <form action="/process_edit/{{edit_event.id}}" method=POST>
+    {% csrf_token %}
+    <p>Event/Location</p>
+    <input type="text" name="name" placeholder="{{edit_event.name}}">
+    <p>Description</p>
+    <input type="text" name="description" placeholder="{{edit_event.description}}">
+    <p>Attendees</p>
+    <input type="number" name="attendees" placeholder="{{edit_event.attendees}}">
+    <p>Dates</p>
+    <input type="date" name="date" placeholder="{{edit_event.date}}">
+    <input type="submit" value="Edit">
+    </form>
+</body>
+</html>

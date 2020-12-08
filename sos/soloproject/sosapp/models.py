@@ -80,24 +80,23 @@ class EventManager(models.Manager):
         #     errors['attendees'] = "Must be atleast 10 attendees!!"    
         
         if len(postData['date'])== 0:
-            errors['date']="A date is required!!"
-        elif len(postData['date'])<2:
-            errors['date'] = "Your date must be at least 2 characters long!!"
+            errors['date']="Date is required!!"
+
+        # if len(postData['date'])== 0:
+        #     errors['date']="A date is required!!"
+        # # elif len(postData['date'])<2:
+        # #     errors['date'] = "Your date must be at least 2 characters long!!"
         
-        if len(postData['time'])== 0:
-            errors['time']="A time is required!!"
-        elif len(postData['time'])<2:
-            errors['time'] = "The time must be at least 2 characters long!!"
-        
+
         return errors
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     attendees = models.IntegerField(max_length=100)
-    date = models.DateTimeField(max_length=100)
-    time = models.DateTimeField(max_length=100)
-    # granted = models.BooleanField(default=False)
+    # date = date.strptime(date_string, "YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]")
+    date = models.DateTimeField(null=True, blank=True)
+    join = models.BooleanField(default=False)
     creator = models.ForeignKey(User, related_name="event_list", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True) 
