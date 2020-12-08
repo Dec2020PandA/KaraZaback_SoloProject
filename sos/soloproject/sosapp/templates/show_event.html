@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main_content">
+        <h1>Event #{{event.id}}</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Date Added</th>
+                    
+                </tr>
+                <tr>
+                    <td>{{event.name}}</td>
+                    <td>{{event.created_at|date:'M d, Y P' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/events" role="button">Go Back</a>
+    </div>
+</body>
+
+</html>

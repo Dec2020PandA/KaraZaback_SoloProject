@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add an Event!</title>
+</head>
+
+<body>
+    <a href="/events" role="button">Go Back</a>
+    <div class="main_content">
+        <h2>Add an Event:</h2>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <p class="text-danger text-small">{{ message }}</p>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/events/create" method='POST'>
+            {% csrf_token %}
+            <p>Event/location:</p>
+            <input type="text" name="name">
+            <p>Description:</p>
+            <input type="text" name="description">
+            <p>Attendees:</p>
+            <input type="number" name="attendees">
+            <p>Date:</p>
+            <input type="date" name="date">
+            <p>Time:</p>
+            <input type="time" name="time">
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</body>
+
+</html>

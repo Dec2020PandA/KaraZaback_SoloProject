@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'events.css' %}">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Hello {{request.session.user_id}}!</h1>
+        <a href="/logout">Logout</a><br>
+        <a href="/events/new"> Make an event!</a>
+    </div>
+        
+    </div>
+    <div class="container">
+        <h1>Your event list:</h1>
+        <table>
+            <tbody>
+            <tr>
+                <th>Item</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for event in all_events %}
+            {% if event.creator.id == request.session.user_id %}
+            {% if event.granted == False %}
+            <tr>
+                <td><a href="/events/{{ event.id}}"><h3>{{event.item}}</h3></a></td>
+                <td>{{event.created_at|date:'M d, Y P' }}</td>
+                <td>
+                    <a href="/events/delete/{{event.id}}">Remove</a>
+                    <a href="/events/edit/{{event.id}}">Edit</a>
+                    <a href="/events/granted/{{event.id}}">Granted</a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h1>Granted events:</h1>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Wisher</th>
+                <th>Date Added</th>
+                <th>Date Granted</th>
+                <th>Likes</th>
+                <th>Actions</th>
+            </tr>
+            {% for event in all_events %}
+            {% if event.granted == True %}
+            <tr>
+                <td>{{event.item}}</td>
+                <td>{{event.creator.first_name}} {{event.creator.last_name}}</td>
+                <td>{{event.created_at|date:'M d, Y P' }}</td>
+                <td>{{event.updated_at|date:'M d, Y P'}}</td>
+                <td>
+                    <p>Likes: {{event.likes.count}}</p>
+                </td>
+                <td>
+                    <a href="/events/{{event.id}}/like">Like</a>
+                    <a href="/events/{{event.id}}/unliklike">Unlike</a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
