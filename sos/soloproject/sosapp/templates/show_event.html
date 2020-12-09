@@ -5,10 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/show_one.css' %}">
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7rL92aa36PMsZlndcit0L5zO1AXR3s-c&callback=initMap">
+  </script>
+  <script src="api.openweathermap.org/data/2.5/weather?q={city name},{state code}&appid=6b7ff94f7577020f80cd4017d31c02a0"></script>
+  <style>
+    #map {
+      height: 100%;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="main_content">
+    <div class="container">
         <h1>Event {{event.name}}</h1>
         <table>
             <tbody>
@@ -27,6 +43,8 @@
             </tbody>
         </table>
         <a href="/events" role="button">Go Back</a>
+        <div id="map"></div>
+
     </div>
 </body>
 

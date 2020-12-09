@@ -1,0 +1,14 @@
+.container{
+    outline: 1px solid black;
+    padding: 5px;
+    margin: 10px 0px 0px 50px;
+    text-align: left;
+    display: inline-block;
+
+}
+
+h1 {
+    display: inline-block;
+    vertical-align: center;
+    margin: 20px 0px 0px 20px;
+}

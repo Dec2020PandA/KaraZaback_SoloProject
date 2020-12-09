@@ -1,0 +1,23 @@
+.form{
+    display: inline-block;
+    vertical-align: top;
+    margin: 100px;
+    text-align: left;
+    padding: 25px;
+    width: 300px;
+    height: 300px;
+}
+
+.submit{
+    display: block;
+    margin-top: 25px;
+    margin-left: 120px;
+}
+
+h1 {
+    padding-left: 100px;
+}
+
+h3 {
+    text-align: center;
+}

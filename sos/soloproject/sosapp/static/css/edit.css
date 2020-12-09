@@ -1,0 +1,12 @@
+.container{
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+    margin: 10px 0px 0px 50px;
+    text-align: left;
+}
+.header {
+    display: inline-block;
+    vertical-align: center;
+    margin: 20px 0px 0px 20px;
+}
