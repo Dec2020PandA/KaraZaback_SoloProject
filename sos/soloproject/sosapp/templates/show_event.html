@@ -15,7 +15,10 @@
 
   <title>Event</title>
   {% load static %}
-  <!-- <link rel="stylesheet" href="{% static 'css/show_one.css' %}"> -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400">
+
+  <link rel="stylesheet" href="{% static 'css/show_one.css' %}">
+
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7rL92aa36PMsZlndcit0L5zO1AXR3s-c&callback=initMap&libraries=&v=weekly"
@@ -33,7 +36,7 @@
     html,
     body {
       height: 80%;
-      margin: 0;
+      margin: 0 0 50px 50px;
       padding: 0;
       display: inline-block;
     }
@@ -52,33 +55,77 @@
 
 <body>
 
-  <div class="container">
+  <div>
     <h1>Event {{event.name}}</h1>
-    <a href="/events" role="button">Go Back</a>
-    <table>
+    <button type="button" class="btn btn-info"><a href="/events" role="button">Go Back</a></button>
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Attendees</th>
           <th scope="col">Date</th>
+          <th scope="col">Weather</th>
+
         </tr>
       </thead>
       <tbody>
         <tr>
           <td scope="row">{{event.name}}</td>
-          <td scope="row">{{event.description}}</td>
-          <td scope="row">{{event.attendees}}</td>
-          <td scope="row">{{event.date }}</td>
+          <td>{{event.description}}</td>
+          <td>{{event.attendees}}</td>
+          <td>{{event.date }}</td>
+          <td>
+            <div id="description"></div>
+            <h2 id="temp"></h2>
+          </td>
         </tr>
       </tbody>
     </table>
-
-
-
   </div>
+
   <div id="map"></div>
 
+  <script> // For weather Api
+    const key = '6b7ff94f7577020f80cd4017d31c02a0';
+    if (key == '') document.getElementById('temp').innerHTML = ('Remember to add your api key!');
+
+    function weatherBallon(cityID) {
+      fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID + '&appid=' + key)
+        .then(function (resp) { return resp.json() }) // Convert data to json
+        .then(function (data) {
+          drawWeather(data);
+        })
+        .catch(function () {
+          // catch any errors
+        });
+    }
+    function drawWeather(d) {
+      var celcius = Math.round(parseFloat(d.main.temp) - 273.15);
+      var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
+      var description = d.weather[0].description;
+
+      document.getElementById('description').innerHTML = description;
+      document.getElementById('temp').innerHTML = celcius + '&deg;';
+      document.getElementById('location').innerHTML = d.name;
+
+      if (description.indexOf('rain') > 0) {
+        document.body.className = 'rainy';
+      } else if (description.indexOf('cloud') > 0) {
+        document.body.className = 'cloudy';
+      } else if (description.indexOf('sunny') > 0) {
+        document.body.className = 'sunny';
+      } else {
+        document.body.className = 'clear';
+      }
+    }
+    window.onload = function () {
+      weatherBallon(6167865);
+    }
+
+
+
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -89,6 +136,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
