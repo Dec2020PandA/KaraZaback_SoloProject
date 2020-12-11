@@ -3,7 +3,7 @@
     vertical-align: top;
     margin: 100px;
     text-align: left;
-    padding: 25px;
+    padding: 0px 25px;
     width: 300px;
     height: 300px;
 }
@@ -15,9 +15,11 @@
 }
 
 h1 {
-    padding-left: 100px;
+    padding: 50px 0px 0px 100px;
 }
 
 h3 {
-    text-align: center;
+    text-align: left;
+    padding-top: 0px;
 }
+
