@@ -36,7 +36,7 @@
     html,
     body {
       height: 80%;
-      margin: 0 0 50px 50px;
+      margin: 0 0 25px 25px;
       padding: 0;
       display: inline-block;
     }
@@ -57,7 +57,7 @@
 
   <div>
     <h1>Event {{event.name}}</h1>
-    <button type="button" class="btn btn-info"><a href="/events" role="button">Go Back</a></button>
+    <button type="button" class="btn btn-light"><a href="/events" role="button">Go Back</a></button>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -78,6 +78,7 @@
           <td>
             <div id="description"></div>
             <h2 id="temp"></h2>
+
           </td>
         </tr>
       </tbody>
@@ -106,7 +107,7 @@
       var description = d.weather[0].description;
 
       document.getElementById('description').innerHTML = description;
-      document.getElementById('temp').innerHTML = celcius + '&deg;';
+      document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
       document.getElementById('location').innerHTML = d.name;
 
       if (description.indexOf('rain') > 0) {
@@ -120,9 +121,9 @@
       }
     }
     window.onload = function () {
-      weatherBallon(6167865);
+      weatherBallon(4143835);
     }
-
+    //4143835
 
 
   </script>

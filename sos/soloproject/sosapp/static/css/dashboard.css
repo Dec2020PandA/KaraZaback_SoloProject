@@ -1,8 +1,51 @@
-.container{
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+
+}
+
+h1 {
+    color: black;
+    padding-top: 20px ;
+    display: inline-block;
+    vertical-align: left;
+}
+h3 {
+    color: black;
+    padding-top: 20px ;
+    display: inline-block;
+    vertical-align: left;
+}
+
+body {
+    height: 80%;
+    margin: 0 0 50px 50px;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 20;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    align-items: center;
+    font-size: 1em;
+    /* height: 100vh; */
+    /* background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa); */
+}
+h2 {
+    margin: 0 auto;
+    text-align: center;
+    /* color: #fff; */
+}
+
+.badge {
+    color: blue;
+}
+
+/* .container{
     display: inline-block;
     vertical-align: top;
     outline: 1px solid black;
     padding: 20px;
     margin: 50px;
     text-align: left;
-}
+} */

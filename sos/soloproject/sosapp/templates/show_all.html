@@ -2,79 +2,110 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <title>Events</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 
 <body>
-    <div id="header">
+    <div>
         <h1>Hello {{user.first_name}}!</h1>
+<br>
         <a href="/logout">Logout</a><br>
+
         <a href="/events/new"> Make an event!</a>
     </div>
-        
+
     </div>
-    <div class="container">
-        <h1>All Events:</h1>
-        <table>
+    <div>
+        <h3>All Events:</h3>
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Attendees</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+
+                {% for event in all_events %}
+                {% if event.creator.id == request.session.user_id %}
+                {% if event.join == False %}
+            </thead>
             <tbody>
-            <tr>
-                <th>Name</th>
-                <th>Attendees</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-            {% for event in all_events %}
-            {% if event.creator.id == request.session.user_id %}
-            {% if event.join == False %}
-            <tr>
-                <td><a href="/events/{{ event.id}}"><h3>{{event.name}}</h3></a></td>
-                <td>{{event.attendees }}</td>
-                <td>{{event.date }}</td>
-                <td>
-                    <a href="/events/delete/{{event.id}}">Remove</a>
-                    <a href="/events/edit/{{event.id}}">Edit</a>
-                    <a href="/events/join/{{event.id}}">Join</a>
-                </td>
-            </tr>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-        </tbody>
+                <tr>
+                    <td ><a href="/events/{{ event.id}}">
+                            <h6>{{event.name}}</h6>
+                        </a></td>
+                    <td scope="row">{{event.attendees }}</td>
+                    <td>{{event.date }}</td>
+                    <td>
+                        <a href="/events/delete/{{event.id}}">Remove</a>
+                        <a href="/events/edit/{{event.id}}">Edit</a>
+                        <a href="/events/join/{{event.id}}">Join</a>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 
-    <div class="container">
-        <h1>Your Future Events:</h1>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Creator</th>
-                <th>Attendees</th>
-                <th>Date</th>
-            </tr>
-            {% for event in all_events %}
-            {% if event.join == True %}
-            <tr>
-                <td>{{event.name}}</td>
-                <td>{{event.creator.first_name}} {{event.creator.last_name}}</td>
-                <td>{{event.attendees}}</td>
-                <td>{{event.date }}</td>
-                <!-- <td>
+    <div>
+        <h3>Your Future Events:</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Creator</th>
+                    <th scope="col">Attendees</th>
+                    <th scope="col">Date</th>
+                </tr>
+                {% for event in all_events %}
+                {% if event.join == True %}
+            </thead>
+            <tbody>
+                <tr><td ><a href="/events/{{ event.id}}">
+                    <h6>{{event.name}}</h6>
+                </a></td>
+                    <td scope="row">{{event.creator.first_name}} {{event.creator.last_name}}</td>
+                    <td>{{event.attendees}}</td>
+                    <td>{{event.date }}</td>
+                    <!-- <td>
                     <p>Likes: {{event.likes.count}}</p>
                 </td>
                 <td>
                     <a href="/events/{{event.id}}/like">Like</a>
                     <a href="/events/{{event.id}}/unliklike">Unlike</a>
                 </td> -->
-            </tr>
-            {% endif %}
-            {% endfor %}
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
         </table>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>

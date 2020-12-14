@@ -1,7 +1,11 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 40;
+}
 .form{
     display: inline-block;
     vertical-align: top;
-    margin: 100px;
+    margin: 50px 10px 100px 100px;
     text-align: left;
     padding: 0px 25px;
     width: 300px;
